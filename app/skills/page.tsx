@@ -78,7 +78,7 @@ export default function SkillsPage() {
                 key={index}
                 className="group p-8 rounded-xl glass-effect border border-accent/20 transition-all duration-300 animate-glow hover:-translate-y-2 relative overflow-hidden hover:border-accent/50"
               >
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-accent/5 to-transparent"></div>
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-br from-accent/5 to-transparent"></div>
 
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-6">

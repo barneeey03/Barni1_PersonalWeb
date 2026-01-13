@@ -18,6 +18,19 @@ import {
   Facebook,
 } from "lucide-react"
 
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiFirebase,
+  SiPostgresql,
+  SiFlutter,
+  SiFigma,
+  SiBootstrap,
+} from "react-icons/si"
+
 const languages = ["English", "Español", "日本語", "Français"]
 const languages_text = [
   "Hello, I'm Jefferson Barnizo",
@@ -27,16 +40,17 @@ const languages_text = [
 ]
 
 const techStackWithIcons = [
-  { name: "React.js", icon: "⚛️" },
-  { name: "Next.js", icon: "▲" },
-  { name: "TypeScript", icon: "📘" },
-  { name: "Tailwind CSS", icon: "🎨" },
-  { name: "Node.js", icon: "🟢" },
-  { name: "Firebase", icon: "🔥" },
-  { name: "PostgreSQL", icon: "🐘" },
-  { name: "Flutter", icon: "📱" },
+  { name: "React.js", icon: <SiReact size={24} color="#61DBFB" /> },
+  { name: "Next.js", icon: <SiNextdotjs size={24} /> },
+  { name: "TypeScript", icon: <SiTypescript size={24} color="#3178C6" /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss size={24} color="#06B6D4" /> },
+  { name: "Node.js", icon: <SiNodedotjs size={24} color="#339933" /> },
+  { name: "Firebase", icon: <SiFirebase size={24} color="#FFCA28" /> },
+  { name: "PostgreSQL", icon: <SiPostgresql size={24} color="#336791" /> },
+  { name: "Flutter", icon: <SiFlutter size={24} color="#02569B" /> },
+  { name: "Figma", icon: <SiFigma size={24} color="#F24E1E" /> },
+  { name: "Bootstrap", icon: <SiBootstrap size={24} color="#7952B3" /> },
 ]
-
 const socialLinks = [
   {
     name: "LinkedIn",
@@ -95,13 +109,13 @@ export default function Home() {
     {
       title: "Inventory Management System",
       description: "Enterprise-level inventory and purchasing platform",
-      tech: ["React.js", "TypeScript", "Firestore"],
+      tech: ["React.js", "TypeScript", "PostgreSQL"],
       image: "/inventory-management-dashboard.png",
     },
     {
       title: "GoBookIt",
       description: "Ticket booking platform with real-time seat management",
-      tech: ["React.js", "Bootstrap", "Firestore"],
+      tech: ["React.js", "Next.js", "PostgreSQL"],
       image: "/movie-ticket-booking-interface.jpg",
     },
     {
@@ -111,6 +125,12 @@ export default function Home() {
       image: "/pet-care-ecommerce-store.jpg",
     },
   ]
+
+  // Map for easy icon lookup
+    const techStackMap = techStackWithIcons.reduce((acc, tech) => {
+      acc[tech.name] = tech.icon
+      return acc
+    }, {} as Record<string, React.ReactNode>)
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden">
@@ -179,7 +199,7 @@ export default function Home() {
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
               <div className="p-6 relative z-10">
                 <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors text-foreground">
@@ -190,9 +210,10 @@ export default function Home() {
                   {project.tech.map((tech, i) => (
                     <span
                       key={i}
-                      className="text-xs px-3 py-1 rounded-full bg-primary/20 text-foreground border border-primary/40 hover:border-primary/80 hover:bg-primary/30 transition-all duration-300"
+                      className="text-xs px-3 py-1 rounded-full bg-primary/20 text-foreground border border-primary/40 hover:border-primary/80 hover:bg-primary/30 transition-all duration-300 flex items-center gap-1 transform hover:scale-110 hover:shadow-lg hover:shadow-accent/20"
                     >
-                      {tech}
+                      {techStackMap[tech] && <span className="text-lg">{techStackMap[tech]}</span>}
+                      <span>{tech}</span>
                     </span>
                   ))}
                 </div>
@@ -229,7 +250,7 @@ export default function Home() {
                 key={index}
                 className="group p-8 rounded-xl glass-effect border border-accent/20 transition-all duration-300 animate-glow hover:-translate-y-2 relative overflow-hidden hover:border-accent/50"
               >
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-accent/5 to-transparent"></div>
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-br from-accent/5 to-transparent"></div>
 
                 <div className="relative z-10">
                   <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 border border-primary/40">
@@ -247,6 +268,7 @@ export default function Home() {
       {/* Separator */}
       <div className="separator-line max-w-4xl mx-auto my-12"></div>
 
+      {/* Tech Stack Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="text-center mb-12 max-w-4xl mx-auto">
           <h2 className="text-5xl font-bold text-foreground mb-6">Tech Stack & Expertise</h2>
@@ -261,7 +283,7 @@ export default function Home() {
             {[...techStackWithIcons, ...techStackWithIcons].map((tech, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 px-8 py-6 rounded-full glass-effect border border-accent/20 whitespace-nowrap hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 flex items-center gap-4 group animate-glow-accent hover:scale-110 transform"
+                className="shrink-0 px-8 py-6 rounded-full glass-effect border border-accent/20 whitespace-nowrap hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 flex items-center gap-4 group animate-glow-accent hover:scale-110 transform"
               >
                 <span className="text-4xl group-hover:animate-icon-bounce inline-block">{tech.icon}</span>
                 <span className="font-semibold text-foreground text-lg">{tech.name}</span>
@@ -274,6 +296,7 @@ export default function Home() {
       {/* Separator */}
       <div className="separator-line-secondary max-w-4xl mx-auto my-12"></div>
 
+      {/* Connect With Me Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-foreground mb-4">Connect With Me</h2>
