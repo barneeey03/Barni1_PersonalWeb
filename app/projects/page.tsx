@@ -37,6 +37,22 @@ const allProjects = [
     tech: ["React.js", "Node.js", "Tailwind CSS", "Bootstrap", "TypeScript", "Firestore"],
     image: "/movie-ticket-booking-interface.jpg",
   },
+  {
+  title: "Personal Portfolio Website",
+  category: "Personal Branding & Showcase",
+  description:
+    "A modern, dark-themed personal portfolio showcasing my projects, skills, and experience with smooth animations, responsive design, and a strong visual identity.",
+  tech: [
+    "Next.js",
+    "React.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Vercel",
+  ],
+  image: "/MyPortfolio.png",
+},
+
 ]
 
 export default function ProjectsPage() {
