@@ -108,10 +108,10 @@ export default function AboutPage() {
               key={index}
               className="group p-8 rounded-xl glass-effect border border-accent/20 transition-all duration-300 animate-glow hover:-translate-y-2 relative overflow-hidden hover:border-accent/50"
             >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-accent/5 to-transparent"></div>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-br from-accent/5 to-transparent"></div>
 
               <div className="relative z-10">
-                <div className="text-5xl font-bold bg-clip-text text-transparent mb-4 bg-gradient-to-r from-primary to-accent">
+                <div className="text-5xl font-bold bg-clip-text text-transparent mb-4 bg-linear-to-r from-primary to-accent">
                   {item.number}
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-foreground">{item.title}</h3>
@@ -145,7 +145,7 @@ export default function AboutPage() {
                 />
               </div>
               <div className="p-4 relative z-10">
-                <p className="text-sm font-semibold text-center text-foreground/80 group-hover:text-accent transition-colors font-light">
+                <p className="text-sm text-center text-foreground/80 group-hover:text-accent transition-colors font-light">
                   {cert.title}
                 </p>
               </div>
