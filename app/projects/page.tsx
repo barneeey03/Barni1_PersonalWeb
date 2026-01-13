@@ -27,7 +27,7 @@ const allProjects = [
     description:
       "Secure inventory and purchasing system with comprehensive supplier tracking, item management, and role-based access control.",
     tech: ["React.js", "Node.js", "Tailwind CSS", "Bootstrap", "TypeScript", "Firestore"],
-    image: "/inventory-management-system.png",
+    image: "/inventory-management-dashboard.png",
   },
   {
     title: "GoBookIt",
