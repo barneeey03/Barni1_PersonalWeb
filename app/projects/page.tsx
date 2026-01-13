@@ -108,7 +108,7 @@ export default function ProjectsPage() {
       {/* Separator */}
       <div className="separator-line max-w-4xl mx-auto mb-20 relative">
         <motion.div
-          className="absolute inset-0 h-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full"
+          className="absolute inset-0 h-1 bg-linear-to-r from-primary via-accent to-primary rounded-full"
           animate={{ x: [0, 200, 0] }}
           transition={{ duration: 4, repeat: Infinity }}
         />
@@ -177,7 +177,7 @@ export default function ProjectsPage() {
       {/* Separator */}
       <div className="separator-line-secondary max-w-4xl mx-auto my-20 relative">
         <motion.div
-          className="absolute inset-0 h-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full"
+          className="absolute inset-0 h-1 bg-linear-to-r from-primary via-accent to-primary rounded-full"
           animate={{ x: [0, -200, 0] }}
           transition={{ duration: 4, repeat: Infinity }}
         />
