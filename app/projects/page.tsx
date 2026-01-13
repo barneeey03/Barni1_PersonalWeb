@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { motion } from "framer-motion"
 
 const allProjects = [
   {
@@ -38,61 +39,101 @@ const allProjects = [
     image: "/movie-ticket-booking-interface.jpg",
   },
   {
-  title: "Personal Portfolio Website",
-  category: "Personal Branding & Showcase",
-  description:
-    "A modern, dark-themed personal portfolio showcasing my projects, skills, and experience with smooth animations, responsive design, and a strong visual identity.",
-  tech: [
-    "Next.js",
-    "React.js",
-    "TypeScript",
-    "Tailwind CSS",
-    "Framer Motion",
-    "Vercel",
-  ],
-  image: "/MyPortfolio.png",
-},
-
+    title: "Personal Portfolio Website",
+    category: "Personal Branding & Showcase",
+    description:
+      "A modern, dark-themed personal portfolio showcasing my projects, skills, and experience with smooth animations, responsive design, and a strong visual identity.",
+    tech: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"],
+    image: "/MyPortfolio.png",
+  },
 ]
+
+// Floating spark particle component
+const Spark = ({ size = 4, color = "#682A68", delay = 0, top = "0%", left = "0%" }) => (
+  <motion.div
+    className="absolute rounded-full"
+    style={{ width: size, height: size, backgroundColor: color, top, left }}
+    animate={{ x: [0, 50, 0], y: [0, -30, 0], opacity: [0.2, 0.8, 0.2] }}
+    transition={{ duration: 8, repeat: Infinity, repeatType: "loop", delay }}
+  />
+)
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
       <Header />
+
+      {/* Floating background particles */}
+      <Spark size={6} color="#682A68" delay={0} top="10%" left="5%" />
+      <Spark size={4} color="#4E1F4E" delay={2} top="20%" left="80%" />
+      <Spark size={5} color="#341534" delay={1} top="70%" left="15%" />
+      <Spark size={3} color="#682A68" delay={3} top="50%" left="50%" />
+      <Spark size={4} color="#4E1F4E" delay={4} top="30%" left="30%" />
+      <Spark size={5} color="#682A68" delay={5} top="80%" left="70%" />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 -left-64 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 -right-64 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
-        </div>
+        {/* Animated background blobs */}
+        <motion.div
+          className="absolute top-1/4 -left-64 w-96 h-96 bg-primary/20 rounded-full blur-3xl"
+          animate={{ x: [0, 40, 0], y: [0, -20, 0] }}
+          transition={{ duration: 12, repeat: Infinity, repeatType: "loop" }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 -right-64 w-96 h-96 bg-accent/20 rounded-full blur-3xl"
+          animate={{ x: [0, -40, 0], y: [0, 20, 0] }}
+          transition={{ duration: 12, repeat: Infinity, repeatType: "loop" }}
+        />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 gradient-text animate-fadeInUp">My Projects</h1>
-          <p className="text-xl text-foreground/70 font-light">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-5xl md:text-6xl font-bold mb-6 gradient-text"
+          >
+            My Projects
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="text-xl text-foreground/70 font-light"
+          >
             Explore my portfolio of innovative and impactful web and mobile applications
-          </p>
+          </motion.p>
         </div>
       </section>
 
       {/* Separator */}
-      <div className="separator-line max-w-4xl mx-auto mb-20"></div>
+      <div className="separator-line max-w-4xl mx-auto mb-20 relative">
+        <motion.div
+          className="absolute inset-0 h-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full"
+          animate={{ x: [0, 200, 0] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        />
+      </div>
 
       {/* Projects Grid */}
       <section className="px-4 sm:px-6 lg:px-8 pb-20 max-w-7xl mx-auto">
         <div className="space-y-12">
           {allProjects.map((project, index) => (
-            <div
+            <motion.div
               key={index}
-              className="group rounded-xl overflow-hidden glass-effect border border-accent/20 transition-all duration-300 animate-glow hover:-translate-y-2 relative hover:border-accent/50"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2, duration: 0.8 }}
+              className="group rounded-xl overflow-hidden glass-effect border border-accent/20 transition-all duration-300 hover:-translate-y-2 relative hover:border-accent/50"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
                 {/* Image */}
                 <div className="relative h-64 md:h-auto min-h-80 overflow-hidden order-2 md:order-1 bg-muted">
-                  <img
+                  <motion.img
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    whileHover={{ scale: 1.05 }}
                   />
                 </div>
 
@@ -110,40 +151,71 @@ export default function ProjectsPage() {
 
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.tech.map((tech, i) => (
-                      <span
+                      <motion.span
                         key={i}
                         className="text-xs px-4 py-2 rounded-full bg-primary/20 text-foreground border border-primary/40 transition-all duration-300 cursor-default hover:scale-105 hover:border-primary/80 hover:bg-primary/30 font-light"
+                        whileHover={{ scale: 1.1 }}
                       >
                         {tech}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
 
-                  <button className="w-fit px-6 py-2 rounded-full font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 bg-primary border-2 border-primary hover:shadow-lg hover:shadow-primary/40">
+                  <motion.button
+                    className="w-fit px-6 py-2 rounded-full font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 bg-primary border-2 border-primary hover:shadow-lg hover:shadow-primary/40"
+                    whileHover={{ scale: 1.05 }}
+                  >
                     View Project
-                  </button>
+                  </motion.button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
 
       {/* Separator */}
-      <div className="separator-line-secondary max-w-4xl mx-auto my-20"></div>
+      <div className="separator-line-secondary max-w-4xl mx-auto my-20 relative">
+        <motion.div
+          className="absolute inset-0 h-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full"
+          animate={{ x: [0, -200, 0] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        />
+      </div>
 
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-6 text-foreground">Interested in Collaboration?</h2>
-        <p className="text-lg text-foreground/70 mb-8 font-light">
-          Let's discuss your next project and how I can help bring your vision to life
-        </p>
-        <Link
-          href="/contact"
-          className="px-8 py-3 rounded-full font-semibold bg-primary text-primary-foreground hover:shadow-lg hover:shadow-primary/40 transition-all duration-300 hover:scale-105 inline-block border-2 border-primary"
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="text-3xl font-bold mb-6 text-foreground"
         >
-          Get in Touch
-        </Link>
+          Interested in Collaboration?
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="text-lg text-foreground/70 mb-8 font-light"
+        >
+          Let's discuss your next project and how I can help bring your vision to life
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <Link
+            href="/contact"
+            className="px-8 py-3 rounded-full font-semibold bg-primary text-primary-foreground hover:shadow-lg hover:shadow-primary/40 transition-all duration-300 hover:scale-105 inline-block border-2 border-primary"
+          >
+            Get in Touch
+          </Link>
+        </motion.div>
       </section>
 
       <Footer />

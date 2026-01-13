@@ -3,6 +3,7 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Code2, Database, Smartphone, Palette, Box, Terminal } from "lucide-react"
+import { motion } from "framer-motion"
 
 const skillCategories = [
   {
@@ -46,37 +47,85 @@ const skillCategories = [
   },
 ]
 
+// Floating spark particle component
+const Spark = ({ size = 4, color = "#682A68", delay = 0, top = "0%", left = "0%" }) => (
+  <motion.div
+    className="absolute rounded-full"
+    style={{ width: size, height: size, backgroundColor: color, top, left }}
+    animate={{ x: [0, 50, 0], y: [0, -30, 0], opacity: [0.2, 0.8, 0.2] }}
+    transition={{ duration: 8, repeat: Infinity, repeatType: "loop", delay }}
+  />
+)
+
 export default function SkillsPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
       <Header />
+
+      {/* Floating background particles */}
+      <Spark size={6} color="#682A68" delay={0} top="10%" left="5%" />
+      <Spark size={4} color="#4E1F4E" delay={2} top="20%" left="80%" />
+      <Spark size={5} color="#341534" delay={1} top="70%" left="15%" />
+      <Spark size={3} color="#682A68" delay={3} top="50%" left="50%" />
+      <Spark size={4} color="#4E1F4E" delay={4} top="30%" left="30%" />
+      <Spark size={5} color="#682A68" delay={5} top="80%" left="70%" />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 -left-64 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 -right-64 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
-        </div>
+        {/* Animated background blobs */}
+        <motion.div
+          className="absolute top-1/4 -left-64 w-96 h-96 bg-primary/20 rounded-full blur-3xl"
+          animate={{ x: [0, 40, 0], y: [0, -20, 0] }}
+          transition={{ duration: 12, repeat: Infinity, repeatType: "loop" }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 -right-64 w-96 h-96 bg-accent/20 rounded-full blur-3xl"
+          animate={{ x: [0, -40, 0], y: [0, 20, 0] }}
+          transition={{ duration: 12, repeat: Infinity, repeatType: "loop" }}
+        />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-foreground animate-fadeInUp">My Skills</h1>
-          <p className="text-xl text-foreground/70 font-light">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-5xl md:text-6xl font-bold mb-6 text-foreground"
+          >
+            My Skills
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="text-xl text-foreground/70 font-light"
+          >
             A comprehensive overview of my technical expertise and professional capabilities
-          </p>
+          </motion.p>
         </div>
       </section>
 
       {/* Separator */}
-      <div className="separator-line max-w-4xl mx-auto mb-20"></div>
+      <div className="separator-line max-w-4xl mx-auto mb-20 relative">
+        <motion.div
+          className="absolute inset-0 h-1 bg-linear-to-r from-primary via-accent to-primary rounded-full"
+          animate={{ x: [0, 200, 0] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        />
+      </div>
 
+      {/* Skills Grid */}
       <section className="px-4 sm:px-6 lg:px-8 pb-20 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => {
             const IconComponent = category.icon
             return (
-              <div
+              <motion.div
                 key={index}
-                className="group p-8 rounded-xl glass-effect border border-accent/20 transition-all duration-300 animate-glow hover:-translate-y-2 relative overflow-hidden hover:border-accent/50"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2, duration: 0.8 }}
+                className="group p-8 rounded-xl glass-effect border border-accent/20 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden hover:border-accent/50"
               >
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-br from-accent/5 to-transparent"></div>
 
@@ -98,27 +147,51 @@ export default function SkillsPage() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )
           })}
         </div>
       </section>
 
       {/* Separator */}
-      <div className="separator-line-secondary max-w-4xl mx-auto my-20"></div>
+      <div className="separator-line-secondary max-w-4xl mx-auto my-20 relative">
+        <motion.div
+          className="absolute inset-0 h-1 bg-linear-to-r from-primary via-accent to-primary rounded-full"
+          animate={{ x: [0, -200, 0] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        />
+      </div>
 
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-6 text-foreground">Ready to Work Together?</h2>
-        <p className="text-lg text-foreground/70 mb-8 font-light">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="text-3xl font-bold mb-6 text-foreground"
+        >
+          Ready to Work Together?
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="text-lg text-foreground/70 mb-8 font-light"
+        >
           Let's create something innovative and impactful. I'm ready to contribute my skills to your next project.
-        </p>
-        <a
+        </motion.p>
+        <motion.a
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.5 }}
           href="/contact"
           className="px-8 py-3 rounded-full font-semibold bg-primary text-primary-foreground hover:shadow-lg hover:shadow-primary/40 transition-all duration-300 hover:scale-105 inline-block border-2 border-primary"
         >
           Let's Connect
-        </a>
+        </motion.a>
       </section>
 
       <Footer />
