@@ -5,10 +5,19 @@ import { useRouter } from "next/navigation"
 
 const languages = [
   { text: "Hello, I'm Jefferson Barnizo", lang: "English" },
+  { text: "Kumusta, ako si Jefferson Barnizo", lang: "Filipino" },
   { text: "Hola, soy Jefferson Barnizo", lang: "Español" },
-  { text: "こんにちは、ジェファーソン・バルニゾです", lang: "日本語" },
   { text: "Bonjour, je suis Jefferson Barnizo", lang: "Français" },
+  { text: "Hallo, ich bin Jefferson Barnizo", lang: "Deutsch" },
+  { text: "Ciao, sono Jefferson Barnizo", lang: "Italiano" },
+  { text: "Olá, eu sou Jefferson Barnizo", lang: "Português" },
+  { text: "Привет, я Джефферсон Барнизо", lang: "Русский" },
+  { text: "こんにちは、ジェファーソン・バルニゾです", lang: "日本語" },
+  { text: "안녕하세요, 저는 제퍼슨 바르니조입니다", lang: "한국어" },
+  { text: "你好，我是 Jefferson Barnizo", lang: "中文" },
+  { text: "مرحبا، أنا جيفرسون بارنيزو", lang: "العربية" },
 ]
+
 
 export function SplashScreen() {
   const [currentLang, setCurrentLang] = useState(0)
