@@ -10,19 +10,16 @@ export function Header() {
   const pathname = usePathname()
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 50)
-    }
-
+    const handleScroll = () => setIsSticky(window.scrollY > 50)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/projects", label: "Projects" },
     { href: "/skills", label: "Skills" },
-    { href: "/about", label: "About" },
+    { href: "/about", label: "About Me" },
+    { href: "/projects", label: "Projects" },
   ]
 
   const isActive = (href: string) => pathname === href
@@ -30,26 +27,37 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isSticky ? "glass-effect backdrop-blur-lg border-b border-accent/20" : "bg-transparent"
+        isSticky
+          ? "glass-effect backdrop-blur-lg border-b border-accent/20"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Barni1 button styling matches home button */}
-          <Link
-            href="/"
-            className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-xs transition-all duration-300 bg-primary/10 border-2 border-primary text-foreground hover:border-accent hover:bg-primary/30 hover:scale-110"
-          >
-            Barni1
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-2">
+        {/* 3 COLUMN GRID */}
+        <div className="grid grid-cols-3 items-center h-20">
+          
+          {/* LEFT — Barni1 (same size as nav buttons, bigger presence) */}
+          <div className="flex items-center">
+            <Link
+              href="/"
+              className="px-4 py-2 rounded-full text-sm font-bold
+              transition-all duration-300 border-2
+              bg-primary/15 border-primary text-foreground
+              hover:border-accent hover:bg-primary/30 hover:scale-105"
+            >
+              Barni1
+            </Link>
+          </div>
+          
+          {/* CENTER: Navigation */}
+          <nav className="hidden md:flex justify-center items-center gap-2">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border-2 ${
+                className={`px-4 py-2 rounded-full text-sm font-medium
+                transition-all duration-300 border-2
+                ${
                   isActive(link.href)
                     ? "border-accent bg-accent/10 text-foreground"
                     : "border-accent/30 text-foreground/70 hover:border-accent/60 hover:text-foreground"
@@ -60,19 +68,22 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="flex items-center gap-4">
+          {/* RIGHT: Contact + Mobile Menu */}
+          <div className="flex items-center justify-end gap-4">
             <Link
               href="/contact"
-              className="hidden sm:block px-6 py-2 rounded-full font-medium text-sm transition-all duration-300 bg-primary text-primary-foreground border-2 border-primary hover:shadow-lg hover:shadow-primary/40 hover:scale-105"
+              className="hidden sm:block px-6 py-2 rounded-full
+              font-medium text-sm transition-all duration-300
+              bg-primary text-primary-foreground border-2 border-primary
+              hover:shadow-lg hover:shadow-primary/40 hover:scale-105"
             >
               Contact
             </Link>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-foreground hover:bg-accent/10 rounded-full transition-colors"
+              className="md:hidden p-2 rounded-full text-foreground
+              hover:bg-accent/10 transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {mobileMenuOpen ? (
@@ -85,14 +96,15 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* MOBILE NAV */}
         {mobileMenuOpen && (
           <nav className="md:hidden pb-4 border-t border-accent/20 animate-slideInLeft">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block py-2 px-4 text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-accent/5 transition-colors duration-300 rounded-lg"
+                className="block py-2 px-4 rounded-lg text-sm font-medium
+                text-foreground/70 hover:text-foreground hover:bg-accent/5 transition"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
@@ -100,7 +112,9 @@ export function Header() {
             ))}
             <Link
               href="/contact"
-              className="block mt-3 mx-4 px-4 py-2 rounded-full text-sm font-medium bg-primary text-primary-foreground text-center hover:opacity-80 transition-opacity"
+              className="block mt-3 mx-4 px-4 py-2 rounded-full
+              text-sm font-medium bg-primary text-primary-foreground text-center
+              hover:opacity-80 transition"
               onClick={() => setMobileMenuOpen(false)}
             >
               Contact
