@@ -31,11 +31,12 @@ import {
   SiBootstrap,
 } from "react-icons/si"
 
-const languages = ["English", "Español", "日本語", "Français"]
+const languages = ["English", "Español","Chinese", "Japanese", "Français", ]
 const languages_text = [
   "Hello, I'm Jefferson Barnizo",
   "Hola, soy Jefferson Barnizo",
-  "こんにちは、ジェファーソン・バルニゾです",
+  "Nǐ hǎo, wǒ shì jié fěi xùn·bā ní zuǒ",
+  "Kon'nichiwa, jefāson barunizodesu",
   "Bonjour, je suis Jefferson Barnizo",
 ]
 

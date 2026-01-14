@@ -11,11 +11,8 @@ const languages = [
   { text: "Hallo, ich bin Jefferson Barnizo", lang: "Deutsch" },
   { text: "Ciao, sono Jefferson Barnizo", lang: "Italiano" },
   { text: "Olá, eu sou Jefferson Barnizo", lang: "Português" },
-  { text: "Привет, я Джефферсон Барнизо", lang: "Русский" },
-  { text: "こんにちは、ジェファーソン・バルニゾです", lang: "日本語" },
-  { text: "안녕하세요, 저는 제퍼슨 바르니조입니다", lang: "한국어" },
-  { text: "你好，我是 Jefferson Barnizo", lang: "中文" },
-  { text: "مرحبا، أنا جيفرسون بارنيزو", lang: "العربية" },
+  { text: "Kon'nichiwa, Jefāson Barunizodesu", lang: "Japanese" },
+  { text: "Nǐ hǎo, wǒ shì jié fěi xùn·bā ní zuǒ", lang: "Chinese" },
 ]
 
 
