@@ -24,14 +24,16 @@ const allProjects = [
     image: "/food-delivery-app-screen.png",
   },
   {
-    title: "Inventory Management System",
-    category: "Enterprise Solution",
-    description:
-      "Secure inventory and purchasing system with comprehensive supplier tracking, item management, and role-based access control.",
-    tech: ["React.js", "Node.js", "Tailwind CSS", "Bootstrap", "TypeScript", "Firestore"],
-    image: "/inventory-management-dashboard.png",
-    github: "https://github.com/barneeey03/ISC-IMS",
-  },
+  title: "Inventory Management System",
+  category: "Enterprise Solution",
+  description:
+    "Secure inventory and purchasing system with comprehensive supplier tracking, item management, and role-based access control.",
+  tech: ["React.js", "Node.js", "Tailwind CSS", "Bootstrap", "TypeScript", "Firestore"],
+  image: "/inventory-management-dashboard.png",
+  github: "https://github.com/barneeey03/ISC-IMS",
+  live: "https://isc-ims.vercel.app/", // <-- added live link
+},
+
   {
     title: "GoBookIt",
     category: "Ticket Booking Platform",
@@ -171,27 +173,43 @@ export default function ProjectsPage() {
                     ))}
                   </div>
 
-                  {/* View Project Button */}
-                  {project.github ? (
+                {/* View Project Buttons */}
+                <div className="flex gap-4">
+                  {project.github && (
                     <motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-fit px-6 py-2 rounded-full font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 bg-primary border-2 border-primary hover:shadow-lg hover:shadow-primary/40 inline-block text-center"
+                      className="px-6 py-2 rounded-full font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 bg-primary border-2 border-primary hover:shadow-lg hover:shadow-primary/40 inline-block text-center"
                       whileHover={{ scale: 1.05 }}
                     >
-                      View Project
+                      GitHub
                     </motion.a>
-                  ) : (
-                    <motion.button
-                      className="w-fit px-6 py-2 rounded-full font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 bg-primary border-2 border-primary hover:shadow-lg hover:shadow-primary/40"
+                  )}
+
+                  {project.live && (
+                    <motion.a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-2 rounded-full font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 bg-accent border-2 border-accent hover:shadow-lg hover:shadow-accent/40 inline-block text-center"
                       whileHover={{ scale: 1.05 }}
-                      onClick={() => showToast("This project does not have a GitHub repository yet.")}
+                    >
+                      Live Demo
+                    </motion.a>
+                  )}
+
+                  {!project.github && !project.live && (
+                    <motion.button
+                      className="px-6 py-2 rounded-full font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 bg-primary border-2 border-primary hover:shadow-lg hover:shadow-primary/40"
+                      whileHover={{ scale: 1.05 }}
+                      onClick={() => showToast("This project does not have a GitHub or Live site yet.")}
                     >
                       View Project
                     </motion.button>
                   )}
                 </div>
+
               </div>
             </motion.div>
           ))}
