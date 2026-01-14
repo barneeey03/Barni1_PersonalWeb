@@ -4,272 +4,202 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { motion } from "framer-motion"
-import { useState } from "react"
 
-const allProjects = [
+type Project = {
+  title: string
+  category: string
+  description: string
+  tech: string[]
+  image: string
+  github: string
+  live: string
+}
+
+const allProjects: Project[] = [
   {
     title: "Pet Care Application",
     category: "E-Commerce & Booking System",
     description:
       "Web-based pet care platform with product browsing, checkout, appointment booking, inventory management, and real-time admin monitoring.",
-    tech: ["React.js", "Tailwind CSS", "Bootstrap", "Firebase Auth", "Firestore"],
+    tech: ["React.js", "Tailwind CSS", "Firebase", "Firestore"],
     image: "/pet-care-ecommerce-store.jpg",
+    github: "https://github.com/barneeey03/pet-care-app",
+    live: "https://pet-care-app.vercel.app",
   },
   {
     title: "Reina Pabili",
     category: "Food Delivery Application",
     description:
-      "Mobile and web-based pabili service with real-time rider tracking, chat functionality, and multiple payment options (GCash & COD).",
-    tech: ["Flutter", "React.js", "Node.js", "Express.js", "PostgreSQL", "Firebase Auth", "Google Maps API"],
+      "Mobile and web-based pabili service with real-time rider tracking and multiple payment options.",
+    tech: ["Flutter", "React.js", "Node.js", "PostgreSQL"],
     image: "/food-delivery-app-screen.png",
+    github: "https://github.com/barneeey03/reina-pabili",
+    live: "https://reina-pabili.vercel.app",
   },
   {
-  title: "Inventory Management System",
-  category: "Enterprise Solution",
-  description:
-    "Secure inventory and purchasing system with comprehensive supplier tracking, item management, and role-based access control.",
-  tech: ["React.js", "Node.js", "Tailwind CSS", "Bootstrap", "TypeScript", "Firestore"],
-  image: "/inventory-management-dashboard.png",
-  github: "https://github.com/barneeey03/ISC-IMS",
-  live: "https://isc-ims.vercel.app/", // <-- added live link
-},
-
+    title: "Inventory Management System",
+    category: "Enterprise Solution",
+    description:
+      "Secure inventory and purchasing system with supplier tracking and role-based access control.",
+    tech: ["React.js", "TypeScript", "Tailwind CSS", "Firestore"],
+    image: "/inventory-management-dashboard.png",
+    github: "https://github.com/barneeey03/ISC-IMS",
+    live: "https://isc-ims.vercel.app/",
+  },
   {
     title: "GoBookIt",
     category: "Ticket Booking Platform",
     description:
-      "Full-featured ticket booking platform for movies and events with dynamic seat selection, booking management, and payment integration.",
-    tech: ["React.js", "Node.js", "Tailwind CSS", "Bootstrap", "TypeScript", "Firestore"],
+      "Ticket booking platform with dynamic seat selection and booking management.",
+    tech: ["React.js", "TypeScript", "Tailwind CSS"],
     image: "/movie-ticket-booking-interface.jpg",
+    github: "https://github.com/barneeey03/gobookit",
+    live: "https://gobookit.vercel.app",
   },
   {
     title: "Personal Portfolio Website",
-    category: "Personal Branding & Showcase",
+    category: "Personal Branding",
     description:
-      "A modern, dark-themed personal portfolio showcasing my projects, skills, and experience with smooth animations, responsive design, and a strong visual identity.",
-    tech: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"],
+      "Modern dark-themed portfolio showcasing projects, skills, and experience.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     image: "/MyPortfolio.png",
     github: "https://github.com/barneeey03/My-Portfolio",
+    live: "https://my-portfolio-lilac-five-37.vercel.app/",
   },
 ]
 
-// Floating spark particle component
-const Spark = ({ size = 4, color = "#682A68", delay = 0, top = "0%", left = "0%" }) => (
+// Floating particles
+const Spark = ({
+  size = 4,
+  delay = 0,
+  top = "0%",
+  left = "0%",
+}: any) => (
   <motion.div
-    className="absolute rounded-full"
-    style={{ width: size, height: size, backgroundColor: color, top, left }}
-    animate={{ x: [0, 50, 0], y: [0, -30, 0], opacity: [0.2, 0.8, 0.2] }}
-    transition={{ duration: 8, repeat: Infinity, repeatType: "loop", delay }}
+    className="absolute rounded-full bg-accent/40"
+    style={{ width: size, height: size, top, left }}
+    animate={{ x: [0, 40, 0], y: [0, -30, 0], opacity: [0.2, 0.8, 0.2] }}
+    transition={{ duration: 8, repeat: Infinity, delay }}
   />
 )
 
 export default function ProjectsPage() {
-  const [toastMessage, setToastMessage] = useState("")
-
-  const showToast = (message: string) => {
-    setToastMessage(message)
-    setTimeout(() => setToastMessage(""), 3000)
-  }
-
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
       <Header />
 
-      {/* Floating background particles */}
-      <Spark size={6} color="#682A68" delay={0} top="10%" left="5%" />
-      <Spark size={4} color="#4E1F4E" delay={2} top="20%" left="80%" />
-      <Spark size={5} color="#341534" delay={1} top="70%" left="15%" />
-      <Spark size={3} color="#682A68" delay={3} top="50%" left="50%" />
-      <Spark size={4} color="#4E1F4E" delay={4} top="30%" left="30%" />
-      <Spark size={5} color="#682A68" delay={5} top="80%" left="70%" />
+      {/* Particles */}
+      <Spark size={6} top="10%" left="5%" />
+      <Spark size={4} delay={2} top="20%" left="80%" />
+      <Spark size={5} delay={1} top="70%" left="15%" />
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        {/* Animated background blobs */}
-        <motion.div
-          className="absolute top-1/4 -left-64 w-96 h-96 bg-primary/20 rounded-full blur-3xl"
-          animate={{ x: [0, 40, 0], y: [0, -20, 0] }}
-          transition={{ duration: 12, repeat: Infinity, repeatType: "loop" }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 -right-64 w-96 h-96 bg-accent/20 rounded-full blur-3xl"
-          animate={{ x: [0, -40, 0], y: [0, 20, 0] }}
-          transition={{ duration: 12, repeat: Infinity, repeatType: "loop" }}
-        />
-
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-5xl md:text-6xl font-bold mb-6 gradient-text"
-          >
-            My Projects
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="text-xl text-foreground/70 font-light"
-          >
-            Explore my portfolio of innovative and impactful web and mobile applications
-          </motion.p>
-        </div>
-      </section>
-
-      {/* Separator */}
-      <div className="separator-line max-w-4xl mx-auto mb-20 relative">
-        <motion.div
-          className="absolute inset-0 h-1 bg-linear-to-r from-primary via-accent to-primary rounded-full"
-          animate={{ x: [0, 200, 0] }}
-          transition={{ duration: 4, repeat: Infinity }}
-        />
-      </div>
-
-      {/* Projects Grid */}
-      <section className="px-4 sm:px-6 lg:px-8 pb-20 max-w-7xl mx-auto">
-        <div className="space-y-12">
-          {allProjects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2, duration: 0.8 }}
-              className="group rounded-xl overflow-hidden glass-effect border border-accent/20 transition-all duration-300 hover:-translate-y-2 relative hover:border-accent/50"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-                {/* Image */}
-                <div className="relative h-64 md:h-auto min-h-80 overflow-hidden order-2 md:order-1 bg-muted">
-                  <motion.img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    whileHover={{ scale: 1.05 }}
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2 relative z-10">
-                  <div className="mb-4">
-                    <span className="text-sm font-semibold uppercase tracking-wider text-accent/80">
-                      {project.category}
-                    </span>
-                  </div>
-                  <h2 className="text-3xl font-bold mb-4 transition-colors text-foreground group-hover:text-accent">
-                    {project.title}
-                  </h2>
-                  <p className="text-foreground/70 mb-6 leading-relaxed font-light">{project.description}</p>
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech, i) => (
-                      <motion.span
-                        key={i}
-                        className="text-xs px-4 py-2 rounded-full bg-primary/20 text-foreground border border-primary/40 transition-all duration-300 cursor-default hover:scale-105 hover:border-primary/80 hover:bg-primary/30 font-light"
-                        whileHover={{ scale: 1.1 }}
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
-
-                {/* View Project Buttons */}
-                <div className="flex gap-4">
-                  {project.github && (
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-6 py-2 rounded-full font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 bg-primary border-2 border-primary hover:shadow-lg hover:shadow-primary/40 inline-block text-center"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      GitHub
-                    </motion.a>
-                  )}
-
-                  {project.live && (
-                    <motion.a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-6 py-2 rounded-full font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 bg-accent border-2 border-accent hover:shadow-lg hover:shadow-accent/40 inline-block text-center"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      Live Demo
-                    </motion.a>
-                  )}
-
-                  {!project.github && !project.live && (
-                    <motion.button
-                      className="px-6 py-2 rounded-full font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 bg-primary border-2 border-primary hover:shadow-lg hover:shadow-primary/40"
-                      whileHover={{ scale: 1.05 }}
-                      onClick={() => showToast("This project does not have a GitHub or Live site yet.")}
-                    >
-                      View Project
-                    </motion.button>
-                  )}
-                </div>
-
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Toast Notification */}
-      {toastMessage && (
-        <motion.div
+      {/* Hero */}
+      <section className="pt-32 pb-20 text-center">
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-accent text-foreground px-6 py-3 rounded-full shadow-lg z-50 font-medium"
+          className="text-5xl font-bold mb-6 gradient-text"
         >
-          {toastMessage}
-        </motion.div>
-      )}
+          My Projects
+        </motion.h1>
+        <p className="text-foreground/70 max-w-xl mx-auto">
+          A curated selection of projects built with consistency, performance, and clean UI.
+        </p>
+      </section>
 
-      {/* Separator */}
-      <div className="separator-line-secondary max-w-4xl mx-auto my-20 relative">
-        <motion.div
-          className="absolute inset-0 h-1 bg-linear-to-r from-primary via-accent to-primary rounded-full"
-          animate={{ x: [0, -200, 0] }}
-          transition={{ duration: 4, repeat: Infinity }}
-        />
-      </div>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="text-3xl font-bold mb-6 text-foreground"
-        >
-          Interested in Collaboration?
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="text-lg text-foreground/70 mb-8 font-light"
-        >
-          Let's discuss your next project and how I can help bring your vision to life
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <Link
-            href="/contact"
-            className="px-8 py-3 rounded-full font-semibold bg-primary text-primary-foreground hover:shadow-lg hover:shadow-primary/40 transition-all duration-300 hover:scale-105 inline-block border-2 border-primary"
+      {/* Projects */}
+      <section className="px-6 pb-24 max-w-7xl mx-auto space-y-14">
+        {allProjects.map((project, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            className="rounded-2xl overflow-hidden glass-effect border border-accent/20
+                       shadow-lg hover:shadow-accent/20 transition-all duration-300"
           >
-            Get in Touch
-          </Link>
-        </motion.div>
+            <div className="grid md:grid-cols-2 gap-6 items-center min-h-[360px]">
+              {/* Image */}
+              <div className="relative h-[260px] md:h-full w-full overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="p-7 flex flex-col justify-between h-full">
+                <div>
+                  <span className="text-accent text-xs uppercase tracking-wide">
+                    {project.category}
+                  </span>
+
+                  <h2 className="text-2xl font-bold mt-2 mb-3">
+                    {project.title}
+                  </h2>
+
+                  <p className="text-sm text-foreground/70 leading-relaxed mb-5">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-xs px-3 py-1 rounded-full bg-primary/20"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex items-center gap-4">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    aria-label="GitHub Repository"
+                    className="group relative w-12 h-12 rounded-full flex items-center justify-center
+                               bg-background/70 backdrop-blur border border-accent/30
+                               shadow-md hover:shadow-accent/40
+                               transition-all duration-300 hover:-translate-y-1"
+                  >
+                    <span className="absolute inset-0 rounded-full bg-accent/20 opacity-0
+                                     group-hover:opacity-100 transition" />
+                    <svg
+                      className="w-5 h-5 z-10 text-foreground group-hover:text-accent transition"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.42 7.86 10.95.58.11.79-.25.79-.56v-2.02c-3.2.7-3.87-1.55-3.87-1.55-.52-1.33-1.27-1.69-1.27-1.69-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.02 1.76 2.67 1.25 3.32.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.45.11-3.02 0 0 .97-.31 3.18 1.19.92-.26 1.9-.38 2.88-.38.98 0 1.96.13 2.88.38 2.21-1.5 3.18-1.19 3.18-1.19.63 1.57.23 2.73.11 3.02.74.81 1.19 1.85 1.19 3.11 0 4.43-2.69 5.41-5.25 5.69.41.35.78 1.05.78 2.13v3.15c0 .31.21.68.8.56 4.56-1.53 7.85-5.85 7.85-10.95C23.5 5.74 18.27.5 12 .5z" />
+                    </svg>
+                  </a>
+
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    aria-label="Live Demo"
+                    className="w-12 h-12 rounded-full flex items-center justify-center
+                               bg-accent text-white shadow-lg shadow-accent/40
+                               transition-all duration-300 hover:-translate-y-1 hover:scale-105"
+                  >
+                    ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 text-center">
+        <Link href="/contact" className="btn-primary">
+          Get in Touch
+        </Link>
       </section>
 
       <Footer />
