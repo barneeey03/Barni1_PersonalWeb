@@ -119,9 +119,9 @@ export default function ProjectsPage() {
             className="rounded-2xl overflow-hidden glass-effect border border-accent/20
                        shadow-lg hover:shadow-accent/20 transition-all duration-300"
           >
-            <div className="grid md:grid-cols-2 gap-6 items-center min-h-[360px]">
+            <div className="grid md:grid-cols-2 gap-6 items-center min-h-90">
               {/* Image */}
-              <div className="relative h-[260px] md:h-full w-full overflow-hidden">
+              <div className="relative h-65 md:h-full w-full overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
