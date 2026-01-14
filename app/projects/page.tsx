@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { motion } from "framer-motion"
+import { useState } from "react"
 
 const allProjects = [
   {
@@ -29,6 +30,7 @@ const allProjects = [
       "Secure inventory and purchasing system with comprehensive supplier tracking, item management, and role-based access control.",
     tech: ["React.js", "Node.js", "Tailwind CSS", "Bootstrap", "TypeScript", "Firestore"],
     image: "/inventory-management-dashboard.png",
+    github: "https://github.com/barneeey03/ISC-IMS",
   },
   {
     title: "GoBookIt",
@@ -45,6 +47,7 @@ const allProjects = [
       "A modern, dark-themed personal portfolio showcasing my projects, skills, and experience with smooth animations, responsive design, and a strong visual identity.",
     tech: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"],
     image: "/MyPortfolio.png",
+    github: "https://github.com/barneeey03/My-Portfolio",
   },
 ]
 
@@ -59,6 +62,13 @@ const Spark = ({ size = 4, color = "#682A68", delay = 0, top = "0%", left = "0%"
 )
 
 export default function ProjectsPage() {
+  const [toastMessage, setToastMessage] = useState("")
+
+  const showToast = (message: string) => {
+    setToastMessage(message)
+    setTimeout(() => setToastMessage(""), 3000)
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
       <Header />
@@ -161,18 +171,44 @@ export default function ProjectsPage() {
                     ))}
                   </div>
 
-                  <motion.button
-                    className="w-fit px-6 py-2 rounded-full font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 bg-primary border-2 border-primary hover:shadow-lg hover:shadow-primary/40"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    View Project
-                  </motion.button>
+                  {/* View Project Button */}
+                  {project.github ? (
+                    <motion.a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-fit px-6 py-2 rounded-full font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 bg-primary border-2 border-primary hover:shadow-lg hover:shadow-primary/40 inline-block text-center"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      View Project
+                    </motion.a>
+                  ) : (
+                    <motion.button
+                      className="w-fit px-6 py-2 rounded-full font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 bg-primary border-2 border-primary hover:shadow-lg hover:shadow-primary/40"
+                      whileHover={{ scale: 1.05 }}
+                      onClick={() => showToast("This project does not have a GitHub repository yet.")}
+                    >
+                      View Project
+                    </motion.button>
+                  )}
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
       </section>
+
+      {/* Toast Notification */}
+      {toastMessage && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-accent text-foreground px-6 py-3 rounded-full shadow-lg z-50 font-medium"
+        >
+          {toastMessage}
+        </motion.div>
+      )}
 
       {/* Separator */}
       <div className="separator-line-secondary max-w-4xl mx-auto my-20 relative">
