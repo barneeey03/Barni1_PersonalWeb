@@ -34,7 +34,7 @@ const allProjects: Project[] = [
     tech: ["Flutter", "React.js", "Node.js", "PostgreSQL"],
     image: "/food-delivery-app-screen.png",
     github: "https://github.com/barneeey03/reina-pabili",
-    live: "https://reina-pabili.vercel.app",
+    live: "https://reina-pabili.com/auth",
   },
   {
     title: "Inventory Management System",
