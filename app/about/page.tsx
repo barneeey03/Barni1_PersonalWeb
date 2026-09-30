@@ -114,7 +114,7 @@ export default function AboutPage() {
             >
               <div className="relative">
                 <motion.img
-                  src="/pfp.jpg"
+                  src="/BARNIZO1X1.jpeg"
                   alt="Jefferson Barnizo"
                   className="w-80 h-80 rounded-2xl border-4 border-accent/40 shadow-2xl shadow-accent/20 object-cover"
                   animate={{ y: [0, -10, 0] }}

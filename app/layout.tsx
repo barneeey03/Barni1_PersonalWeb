@@ -37,8 +37,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Decide before first paint whether the home splash screen should show (see components/splash-screen.tsx) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var d=document.documentElement;if(sessionStorage.getItem("jb-splash-seen")==="1")d.setAttribute("data-splash-seen","");else if(location.pathname==="/")d.setAttribute("data-splash-active","")}catch(e){}`,
+          }}
+        />
         <meta name="theme-color" content="#000000" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
       </head>

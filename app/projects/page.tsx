@@ -17,6 +17,16 @@ type Project = {
 
 const allProjects: Project[] = [
   {
+    title: "PARINI",
+    category: "Ride-Hailing Platform",
+    description:
+      "Tricycle and motorcycle ride-hailing platform for Mogpog, Marinduque, with ride booking, trip tracking, a rider dashboard, and an admin panel for riders, wallets, payments, and reports.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
+    image: "/parini-website.png",
+    github: "https://github.com/barneeey03/Parine",
+    live: "https://parine.vercel.app",
+  },
+  {
     title: "alagaco",
     category: "Company Website",
     description:
@@ -65,6 +75,16 @@ const allProjects: Project[] = [
     image: "/inventory-management-dashboard.png",
     github: "https://github.com/barneeey03/ISC-IMS",
     live: "https://isc-ims.vercel.app/",
+  },
+  {
+    title: "ISC Crew Management System",
+    category: "Recruitment & Crewing Platform",
+    description:
+      "Recruitment and crewing management system for maritime operations, covering crew applications, documentation, sign-on/sign-off, fleet management, and payroll allotment with role-based admin dashboards.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase"],
+    image: "/isc-cms.png",
+    github: "https://github.com/barneeey03/ISC-CMS-main",
+    live: "https://isc-cms.vercel.app/login",
   },
   {
     title: "LUGGifLy",

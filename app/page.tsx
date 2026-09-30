@@ -148,7 +148,7 @@ export default function Home() {
         <div className="relative z-10 max-w-4xl mx-auto text-center animate-fadeInUp">
           <div className="mb-8 inline-block">
             <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-accent/40 animate-float shadow-lg shadow-accent/20">
-              <img src="/pfp.jpg" alt="Jefferson Barnizo" className="w-full h-full object-cover" />
+              <img src="/BARNIZO1X1.jpeg" alt="Jefferson Barnizo" className="w-full h-full object-cover" />
             </div>
           </div>
 
