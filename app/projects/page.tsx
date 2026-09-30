@@ -17,14 +17,34 @@ type Project = {
 
 const allProjects: Project[] = [
   {
-    title: "Pet Care Application",
-    category: "E-Commerce & Booking System",
+    title: "alagaco",
+    category: "Company Website",
     description:
-      "Web-based pet care platform with product browsing, checkout, appointment booking, inventory management, and real-time admin monitoring.",
-    tech: ["React.js", "Tailwind CSS", "Firebase", "Firestore"],
-    image: "/pet-care-ecommerce-store.jpg",
-    github: "https://github.com/barneeey03/pet-care-app",
-    live: "https://pet-care-app.vercel.app",
+      "Website for alagaco, a platform connecting households with verified local professionals for child and adult care, physical therapy, tutoring, home cleaning, and repairs.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    image: "/alagaco-website.png",
+    github: "https://github.com/barneeey03/AlagoCo-company-website",
+    live: "https://alagaco.com/",
+  },
+  {
+    title: "PixelTech",
+    category: "Company Website",
+    description:
+      "Website for PixelTech, a creative lab offering design, branding, web development, and app development, with an animated hero slider and case studies.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    image: "/pixeltech-website.png",
+    github: "https://github.com/barneeey03/PixelTechWeb",
+    live: "https://pixeltechph.com/",
+  },
+  {
+    title: "OrionNexus Website",
+    category: "Corporate Website",
+    description:
+      "Corporate website for OrionNexus Management & Marine Services, showcasing crewing, shipmanagement, port agency, and 24/7 operations services with an animated splash screen and hero slider.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+    image: "/orionnexus-website.png",
+    github: "https://github.com/barneeey03/orionnexus-website",
+    live: "https://orionnexus-website.vercel.app",
   },
   {
     title: "Reina Pabili",
@@ -47,14 +67,14 @@ const allProjects: Project[] = [
     live: "https://isc-ims.vercel.app/",
   },
   {
-    title: "GoBookIt",
-    category: "Ticket Booking Platform",
+    title: "LUGGifLy",
+    category: "Luggage Tracking & Booking Platform",
     description:
-      "Ticket booking platform with dynamic seat selection and booking management.",
-    tech: ["React.js", "TypeScript", "Tailwind CSS"],
-    image: "/movie-ticket-booking-interface.jpg",
-    github: "https://github.com/barneeey03/gobookit",
-    live: "https://gobookit.vercel.app",
+      "Luggage transfer, storage, and delivery booking platform for Philippine airports and hotels, with real-time tracking of every scan from pickup to delivery.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
+    image: "/luggifly-website.png",
+    github: "https://github.com/barneeey03/LUGGifLy",
+    live: "https://lug-gif-ly.vercel.app",
   },
   {
     title: "Personal Portfolio Website",

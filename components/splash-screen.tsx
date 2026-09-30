@@ -83,7 +83,7 @@ export function SplashScreen() {
 
         {/* Subtitle */}
         <p className="text-foreground/60 text-base font-light tracking-wide mb-12 animate-slideInLeft">
-          Full Stack Developer & IT Student
+          Full Stack Developer & IT Graduate
         </p>
 
         {/* Language indicators with enhanced styling */}

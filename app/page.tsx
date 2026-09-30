@@ -114,16 +114,16 @@ export default function Home() {
       image: "/inventory-management-dashboard.png",
     },
     {
-      title: "GoBookIt",
-      description: "Ticket booking platform with real-time seat management",
-      tech: ["React.js", "Next.js", "PostgreSQL"],
-      image: "/movie-ticket-booking-interface.jpg",
+      title: "LUGGifLy",
+      description: "Luggage transfer and storage booking with real-time tracking",
+      tech: ["Next.js", "TypeScript", "Supabase"],
+      image: "/luggifly-website.png",
     },
     {
-      title: "Pet Care Application",
-      description: "Complete pet care platform with e-commerce and bookings",
-      tech: ["React.js", "Tailwind CSS", "Firebase"],
-      image: "/pet-care-ecommerce-store.jpg",
+      title: "OrionNexus Website",
+      description: "Corporate website for a maritime management and marine services company",
+      tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+      image: "/orionnexus-website.png",
     },
   ]
 
@@ -157,7 +157,7 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
             <p className="text-lg text-foreground/80 font-light">
-              Full Stack Developer • IT Student <br /> Crafting Digital Experiences
+              Full Stack Developer • IT Graduate <br /> Crafting Digital Experiences
             </p>
           </div>
 

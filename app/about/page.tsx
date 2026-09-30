@@ -93,7 +93,7 @@ export default function AboutPage() {
                 transition={{ delay: 0.5, duration: 1 }}
                 className="text-lg text-foreground/70 mb-6 leading-relaxed font-light"
               >
-                I am an IT student and future Software Engineer focused on building scalable, high-impact applications. I create efficient, user-centered solutions designed for real-world use.
+                I am an IT graduate and future Software Engineer focused on building scalable, high-impact applications. I create efficient, user-centered solutions designed for real-world use.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}

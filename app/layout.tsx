@@ -10,7 +10,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Jefferson Barnizo | Full Stack Developer",
   description:
-    "Full Stack Developer & IT Student - Building scalable, high-impact applications with modern technologies",
+    "Full Stack Developer & IT Graduate - Building scalable, high-impact applications with modern technologies",
   generator: "v0.app",
   icons: {
     icon: [
